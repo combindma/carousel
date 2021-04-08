@@ -1,0 +1,64 @@
+{
+    "name": "combindma/carousel",
+    "description": "This is my package Carousel",
+    "keywords": [
+        "combindma",
+        "laravel",
+        "carousel"
+    ],
+    "homepage": "https://github.com/combindma/carousel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Combind",
+            "email": "hello@combind.ma",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "combindma/flash": "^1.0",
+        "cviebrock/eloquent-sluggable": "^8.0",
+        "elegantweb/sanitizer": "^1.0",
+        "illuminate/contracts": "^8.0",
+        "livewire/livewire": "^2.4",
+        "spatie/laravel-medialibrary": "^9.5",
+        "spatie/laravel-package-tools": "^1.4.3"
+    },
+    "require-dev": {
+        "brianium/paratest": "^6.2",
+        "nunomaduro/collision": "^5.3",
+        "orchestra/testbench": "^6.15",
+        "phpunit/phpunit": "^9.3",
+        "vimeo/psalm": "^4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Combindma\\Carousel\\": "src",
+            "Combindma\\Carousel\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Combindma\\Carousel\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "./vendor/bin/testbench package:test --parallel --no-coverage",
+        "test-filter": "vendor/bin/phpunit --no-coverage --filter",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Combindma\\Carousel\\CarouselServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
