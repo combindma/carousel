@@ -13,13 +13,18 @@ You can install the package via composer:
 composer require combindma/carousel
 ```
 
-You can publish and run the migrations with:
+You must publish and run the migrations with:
 
 ```bash
 php artisan vendor:publish --provider="Combindma\Carousel\CarouselServiceProvider" --tag="carousel-migrations"
 php artisan migrate
 ```
 
+You must publish assets with:
+
+```bash
+php artisan vendor:publish --provider="Combindma\Carousel\CarouselServiceProvider" --tag="carousel-assets"
+```
 
 ## Testing
 
