@@ -2,6 +2,7 @@
 
 namespace Combindma\Carousel\Tests;
 
+use Combindma\Carousel\CarouselServiceProvider;
 use Combindma\Carousel\Http\Controllers\CarouselController;
 use Elegant\Sanitizer\Laravel\SanitizerServiceProvider;
 use Faker\Factory as Faker;
@@ -9,7 +10,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Route;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Combindma\Carousel\CarouselServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -60,7 +60,6 @@ class TestCase extends Orchestra
 
         include_once __DIR__.'/../database/migrations/create_carousels_table.php.stub';
         (new \CreateCarouselsTable())->up();
-
     }
 
     protected function defineRoutes($router)

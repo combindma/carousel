@@ -25,7 +25,7 @@ class CarouselRequest extends FormRequest
             'is_featured' => 'present|boolean',
             'featured_image' => ['nullable', 'file', 'mimes:png,jpg,jpeg', 'dimensions:max_width=2500,max_height=2500', 'max:1024'],
             'images.*' => ['nullable', 'file', 'mimes:png,jpg,jpeg', 'dimensions:max_width=2500,max_height=2500', 'max:1024'],
-            'meta' => 'nullable|array'
+            'meta' => 'nullable|array',
         ];
     }
 
@@ -50,8 +50,8 @@ class CarouselRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'is_published' => $this->is_published??0,
-            'is_featured' => $this->is_featured??0,
+            'is_published' => $this->is_published ?? 0,
+            'is_featured' => $this->is_featured ?? 0,
         ]);
     }
 }

@@ -19,11 +19,9 @@ class OrderImages extends Component
 
     public function updateImageOrder($reordered)
     {
-        foreach ($reordered as $data)
-        {
+        foreach ($reordered as $data) {
             $media = Media::find($data['value']);
-            if ($media)
-            {
+            if ($media) {
                 $media->order_column = $data['order'];
                 $media->save();
             }

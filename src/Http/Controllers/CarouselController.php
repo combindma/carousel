@@ -2,7 +2,6 @@
 
 namespace Combindma\Carousel\Http\Controllers;
 
-
 use Combindma\Carousel\Http\Requests\CarouselRequest;
 use Combindma\Carousel\Models\Carousel;
 
@@ -13,18 +12,21 @@ class CarouselController extends Controller
         $carousels = Carousel::with(['media'])
             ->latest('id')
             ->paginate(10);
+
         return view('carousel::carousels.index', compact('carousels'));
     }
 
     public function create()
     {
         $carousel = new Carousel();
+
         return view('carousel::carousels.create', compact('carousel'));
     }
 
     public function edit(Carousel $carousel)
     {
         $carousel->load('media');
+
         return view('carousel::carousels.edit', compact('carousel'));
     }
 
@@ -32,8 +34,7 @@ class CarouselController extends Controller
     {
         $carousel = Carousel::create($request->validated());
 
-        if ($request->hasFile('featured_image'))
-        {
+        if ($request->hasFile('featured_image')) {
             // Add Featured Media
             $carousel->addFeaturedImage($request->file('featured_image'));
         }
@@ -46,6 +47,7 @@ class CarouselController extends Controller
         }
 
         flash('Ajout effectué avec succès');
+
         return redirect(route('carousel::carousels.index'));
     }
 
@@ -53,8 +55,7 @@ class CarouselController extends Controller
     {
         $carousel->update($request->validated());
 
-        if ($request->hasFile('featured_image'))
-        {
+        if ($request->hasFile('featured_image')) {
             // Add Featured Media
             $carousel->addFeaturedImage($request->file('featured_image'));
         }
@@ -67,6 +68,7 @@ class CarouselController extends Controller
         }
 
         flash('Enregistrement effectué avec succès');
+
         return back();
     }
 
@@ -75,6 +77,7 @@ class CarouselController extends Controller
         dd($carousel->delete());
         $carousel->delete();
         flash('Carousel supprimée avec succès');
+
         return back();
     }
 }

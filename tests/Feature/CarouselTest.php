@@ -2,7 +2,6 @@
 
 namespace Combindma\Carousel\Tests\Feature;
 
-
 use Combindma\Carousel\Models\Carousel;
 use Combindma\Carousel\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -27,7 +26,7 @@ class CarouselTest extends TestCase
     /** @test */
     public function user_can_create_a_carousel()
     {
-        $data =  $this->setData();
+        $data = $this->setData();
         $response = $this->from(route('carousel::carousels.create'))->post(route('carousel::carousels.store'), $data);
         $response->assertSessionHasNoErrors();
         $this->assertCount(1, $carousels = Carousel::all());
@@ -46,7 +45,7 @@ class CarouselTest extends TestCase
     public function user_can_update_a_carousel()
     {
         $carousel = Carousel::factory()->create();
-        $data =  $this->setData();
+        $data = $this->setData();
         $response = $this->from(route('carousel::carousels.edit', $carousel))->put(route('carousel::carousels.update', $carousel), $data);
         $response->assertRedirect(route('carousel::carousels.edit', $carousel));
         $response->assertSessionHasNoErrors();
@@ -65,8 +64,8 @@ class CarouselTest extends TestCase
      */
     public function user_cannot_create_a_carousel_with_invalid_data($formInput, $formInputValue)
     {
-        $data =  $this->setData([
-            $formInput => $formInputValue
+        $data = $this->setData([
+            $formInput => $formInputValue,
         ]);
         $response = $response = $this->from(route('carousel::carousels.create'))->post(route('carousel::carousels.store'), $data);
         $response->assertRedirect(route('carousel::carousels.create'));
@@ -81,8 +80,8 @@ class CarouselTest extends TestCase
     public function user_cannot_update_a_carousel_with_invalid_data($formInput, $formInputValue)
     {
         $carousel = Carousel::factory()->create();
-        $data =  $this->setData([
-            $formInput => $formInputValue
+        $data = $this->setData([
+            $formInput => $formInputValue,
         ]);
         $response = $this->from(route('carousel::carousels.edit', $carousel))->put(route('carousel::carousels.update', $carousel), $data);
         $response->assertRedirect(route('carousel::carousels.edit', $carousel));

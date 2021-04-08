@@ -13,7 +13,9 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Carousel extends Model implements HasMedia
 {
-    use HasFactory, Sluggable, InteractsWithMedia;
+    use HasFactory;
+    use Sluggable;
+    use InteractsWithMedia;
 
     protected $fillable = [
         'title',
@@ -23,7 +25,7 @@ class Carousel extends Model implements HasMedia
         'published_at',
         'is_published',
         'is_featured',
-        'meta'
+        'meta',
     ];
 
     protected $casts = [
@@ -35,8 +37,8 @@ class Carousel extends Model implements HasMedia
     {
         return [
             'slug' => [
-                'source' => 'title'
-            ]
+                'source' => 'title',
+            ],
         ];
     }
 
@@ -115,12 +117,14 @@ class Carousel extends Model implements HasMedia
     public function addFeaturedImage($file)
     {
         $this->addMedia($file)->toMediaCollection('featured_image', 'images');
+
         return $this;
     }
 
     public function addImage($file)
     {
         $this->addMedia($file)->toMediaCollection('images', 'images');
+
         return $this;
     }
 
