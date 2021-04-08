@@ -33,7 +33,7 @@
             </div>
             @include('dashui::components.alert')
             @csrf
-            @include('carousel::carousels.form', ['createForm' => true])
+            @include('carousel::form', ['createForm' => true])
         </form>
     </div>
 @endsection

@@ -13,21 +13,21 @@ class CarouselController extends Controller
             ->latest('id')
             ->paginate(10);
 
-        return view('carousel::carousels.index', compact('carousels'));
+        return view('carousel::index', compact('carousels'));
     }
 
     public function create()
     {
         $carousel = new Carousel();
 
-        return view('carousel::carousels.create', compact('carousel'));
+        return view('carousel::create', compact('carousel'));
     }
 
     public function edit(Carousel $carousel)
     {
         $carousel->load('media');
 
-        return view('carousel::carousels.edit', compact('carousel'));
+        return view('carousel::edit', compact('carousel'));
     }
 
     public function store(CarouselRequest $request)
@@ -74,7 +74,6 @@ class CarouselController extends Controller
 
     public function destroy(Carousel $carousel)
     {
-        dd($carousel->delete());
         $carousel->delete();
         flash('Carousel supprimée avec succès');
 

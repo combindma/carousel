@@ -43,6 +43,6 @@ class OrderImages extends Component
 
     public function render()
     {
-        return view('carousel::carousels.order-images');
+        return view('carousel::order-images');
     }
 }

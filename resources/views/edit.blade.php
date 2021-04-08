@@ -34,7 +34,7 @@
             @include('dashui::components.alert')
             @csrf
             @method('PUT')
-            @include('carousel::carousels.form', ['createForm' => false])
+            @include('carousel::wform', ['createForm' => false])
         </form>
     </div>
 @endsection
