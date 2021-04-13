@@ -42,6 +42,11 @@ class Carousel extends Model implements HasMedia
         ];
     }
 
+    protected static function newFactory()
+    {
+        return \Combindma\Carousel\Database\Factories\CarouselFactory::new();
+    }
+
     public static function getAllCarousels()
     {
         return Cache::rememberForever('carousels', function () {
