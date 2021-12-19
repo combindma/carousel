@@ -5,7 +5,7 @@ namespace Combindma\Carousel\Http\Controllers;
 use Combindma\Carousel\Http\Requests\CarouselRequest;
 use Combindma\Carousel\Models\Carousel;
 
-class CarouselController extends Controller
+class CarouselController
 {
     public function index()
     {

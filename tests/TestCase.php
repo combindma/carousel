@@ -3,9 +3,7 @@
 namespace Combindma\Carousel\Tests;
 
 use Combindma\Carousel\CarouselServiceProvider;
-use Combindma\Carousel\Http\Controllers\CarouselController;
 use Elegant\Sanitizer\Laravel\SanitizerServiceProvider;
-use Faker\Factory as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Route;
 use Livewire\LivewireServiceProvider;
@@ -13,16 +11,12 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
-    protected $faker;
-
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
-        $this->faker = Faker::create();
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Combindma\\Carousel\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
-        //$this->withoutExceptionHandling();
     }
 
     protected function getPackageProviders($app)
@@ -36,8 +30,10 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', [
+        //Schema::dropAllTables(); //run MYSQL server by this command: brew services start mysql
+
+        $app['config']->set('database.default', 'testing');
+        $app['config']->set('database.connections.testing', [
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
@@ -64,8 +60,9 @@ class TestCase extends Orchestra
 
     protected function defineRoutes($router)
     {
-        Route::group(['as' => 'carousel::', 'middleware' => ['bindings']], function () {
+        Route::carousel();
+        /*Route::group(['as' => 'carousel::', 'middleware' => ['bindings']], function () {
             Route::resource('carousels', CarouselController::class)->except(['show']);
-        });
+        });*/
     }
 }
