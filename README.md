@@ -16,14 +16,14 @@ composer require combindma/carousel
 You must publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --provider="Combindma\Carousel\CarouselServiceProvider" --tag="carousel-migrations"
+php artisan vendor:publish --tag="carousel-migrations"
 php artisan migrate
 ```
 
 You must publish assets with:
 
 ```bash
-php artisan vendor:publish --provider="Combindma\Carousel\CarouselServiceProvider" --tag="carousel-assets"
+php artisan vendor:publish --tag="carousel-assets"
 ```
 
 ## Testing
