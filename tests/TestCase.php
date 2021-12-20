@@ -3,6 +3,7 @@
 namespace Combindma\Carousel\Tests;
 
 use Combindma\Carousel\CarouselServiceProvider;
+use Combindma\Carousel\Http\Controllers\CarouselController;
 use Elegant\Sanitizer\Laravel\SanitizerServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Route;
@@ -60,9 +61,8 @@ class TestCase extends Orchestra
 
     protected function defineRoutes($router)
     {
-        Route::carousel();
-        /*Route::group(['as' => 'carousel::', 'middleware' => ['bindings']], function () {
+        Route::group(['as' => 'carousel::', 'middleware' => ['bindings']], function () {
             Route::resource('carousels', CarouselController::class)->except(['show']);
-        });*/
+        });
     }
 }
